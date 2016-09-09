@@ -24,9 +24,10 @@ operacoes.soma = function(){ //funcao que somará todos os atributos se eles for
 
 function subtracao(){
   var _var = 0;
-  for(let ope in operacoes){
-    if(typeof operacoes[ope] == 'number'){
-      _var -= operacoes[ope];
+  for(let ope in this){
+    let valor = this[ope];
+    if(typeof valor == 'number'){
+      _var -= valor;
     }
   }
  return _var;
@@ -35,20 +36,28 @@ function subtracao(){
 
 //divisao e multiplicacao não funcionam para esse exemplo
 operacoes.divisao = function (){
-  var _var = 0;
+  var _var = null;
   for(let ope in operacoes){
-    if(typeof operacoes[ope] == 'number' && operacoes[ope] != 0){
+    if(typeof operacoes[ope] == 'number' && operacoes[ope] != 0 && _var != null){
       _var /= operacoes[ope];
+    }else{
+      if(typeof operacoes[ope] == 'number'){
+        _var = operacoes[ope];
+      }
     }
   }
  return _var;
 };
 
 var multiplicacao = function(){
-  var _var = 0;
+  var _var = null;
   for(let ope in operacoes){
-    if(typeof operacoes[ope] == 'number' && operacoes[ope] != 0){
+    if(typeof operacoes[ope] == 'number' && operacoes[ope] != 0 && _var != null){
       _var *= operacoes[ope];
+    }else{
+      if(typeof operacoes[ope] == 'number'){
+        _var = operacoes[ope];
+      }
     }
   }
  return _var;
