@@ -2,7 +2,7 @@
 
 
 //Logger
-//Currying - uma função aninhada em outra... 
+//Currying - uma função aninhada em outra...
 function configuraDebug(label){
   return function sendMessage(mensagem){ //não precisa ter um nome aqui na funcao... poderia ser direto function
     console.log(label, mensagem);
@@ -16,7 +16,7 @@ debugDoArquivo('teste 1');
 debugDaFuncao('teste 2');
 
 
-console.log(configuraDebug('Nome:')('Esse é o nome da pessoa!'));
+console.log(configuraDebug('Nome:')('Esse é o nome da pessoa!'));//passa-se dois argumentos separados
 
 
 var valor = configuraDebug('Log: ');
