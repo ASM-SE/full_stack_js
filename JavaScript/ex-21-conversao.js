@@ -7,7 +7,7 @@ function Pessoa(nome){
   this.nome = nome;
   this.toString = function(){ //converte o valor para poder ser utilizado em uma comparação booleana
     return this.nome;
-  }
+  } //pode-se utilizar também o this.valueOf
 
 }
 
