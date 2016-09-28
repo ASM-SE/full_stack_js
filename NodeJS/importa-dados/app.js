@@ -28,4 +28,4 @@ companies.forEach((company) => { /*funcao anonima que não será exportada - Ver
   new Company(...company).save(); //os ... se chama spread operator ES6
 });
 
-console.log(Company.get());
+console.log(Company.get('ca'));

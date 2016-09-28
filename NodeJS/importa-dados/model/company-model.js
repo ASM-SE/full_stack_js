@@ -70,8 +70,10 @@ class Company {
   }
 
   static get(name) {
-    if(name){
-    return companies.filter((company) => company.name.toLowerCase().startWith(name));
+    if(name) {
+      return companies.filter(
+        (company) => company.name.toLowerCase().startsWith(name)
+      );
     }
     return companies;
   }
