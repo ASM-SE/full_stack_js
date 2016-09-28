@@ -4,8 +4,6 @@ require('./init-database');
 
 const http = require('http');
 
-
-
 const server = http.createServer((req, res) =>{
   console.log(req.url); //recebe as requisições - vai imprimir no console as requisiçoes que foram recebidas
 });
