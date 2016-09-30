@@ -1,13 +1,15 @@
 'use strict';
+
 require('./init-database');
+const express = require('express'); //isntalado como npm install --save express
+const app = express();//app se torna um gerenciador de rotas
 
 
-const http = require('http');
-
-const server = http.createServer((req, res) =>{
-  console.log(req.url); //recebe as requisições - vai imprimir no console as requisiçoes que foram recebidas
+app.use(require('./routes/company-route')); //use espera que o que seja passado seja uma rota
+app.use(require('./routes/user-route'));
+//Criando rotas:
+app.get('/', (req, res) => {
+  res.send('Olá mundo!');
 });
 
-server.listen(3000, () => {
-  console.log('Escutando na porta 3000');
-})
+module.exports = app;
