@@ -1,6 +1,8 @@
 'use strict';
 
-require('./init-database');
+
+//require('./init-database');
+const db = require('./db');
 const express = require('express'); //isntalado como npm install --save express
 const bodyParser = require('body-parser');
 const app = express();//app se torna um gerenciador de rotas
