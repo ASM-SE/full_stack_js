@@ -17,7 +17,7 @@ const schema = new mongoose.Schema({ //Criação de um schema - isso vem do mong
   }
 });
 
-const User = mongoose.model('User', schema); //ERRO AQUI... O BANCO NÃO CORRESPONDE A ESTE MODELO
+const User = mongoose.model('User', schema); //Ao indicar User ele vai relacionar o coolection no mongodb no plural, no caso users (tive problemas ao criar a collection pois o nome que usei era user)
 
 // .../users?_id=???
 module.exports.get = (query) =>{

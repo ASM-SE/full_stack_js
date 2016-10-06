@@ -14,6 +14,9 @@ ctrl.getUsers = (req, res) =>{
   //  res.send(User.get(req.query.name)); //Antes sem o mongodb
 };
 
+
+
+
 ctrl.saveUser = (req, res) => {
   res.send('save');
 };
