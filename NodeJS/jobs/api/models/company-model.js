@@ -36,19 +36,17 @@ const schema = new mongoose.Schema({
 const Company = mongoose.model('Company', schema);
 
 module.exports.get = (query) => {
+  query.active = true;
   return Company.find(query);
 };
 
-/*
-module.exports.get = (query) => {
-    query.active = true;
-    return Company.find(query);
-}*/
 
 
 module.exports.getById = (_id) => {
-  let _query = { _id };
-  return Company.findOne(_query);
+  let _query = { _id, active: true };
+  let _fields = { email: false,
+                  site: false}; //para não mostrar e-mail
+  return Company.findOne(_query, _fields);
 };
 
 module.exports.save = (company) =>{
@@ -69,11 +67,11 @@ module.exports.update = (_id, company) =>{
 
 module.exports.remove = (_id) =>{
   let _query = {_id};
-  return Company.remove(_query);
+  let _fields = {active: false};
+  return Company.update(_query, company);
 }
 
 
-module.exports = Company;
 /*ANTES DO MONGODB
 let companies = [];
 

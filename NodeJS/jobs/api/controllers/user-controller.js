@@ -62,4 +62,18 @@ ctrl.removeUser = (req, res) =>{
 }
 
 
+ctrl.login = (req, res) =>{
+  User.autenticate(req.params.name, req.params.password)
+  .then((data) =>{
+        console.log('Usuário autenticado!');
+    res.send(data);
+  })
+  .catch((err) =>{
+        console.log('Usuário inexistente!'); 
+    res.status(500).send(err);
+
+  });
+}
+
+
 module.exports = ctrl;

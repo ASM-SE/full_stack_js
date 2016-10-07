@@ -29,6 +29,15 @@ module.exports.get = (query) =>{
   });*/
 };
 
+//Autenticacao de usuario
+module.exports.autenticate = (_name, _password) =>{
+  let _query = { name: _name, password: _password, active: true};
+  let _fields = {_id: false,
+                 active: false};
+  return User.find(_query, _fields);
+
+};
+
 module.exports.getById = (_id) => {
   let _query = { _id };
   let _fields = {password: false};

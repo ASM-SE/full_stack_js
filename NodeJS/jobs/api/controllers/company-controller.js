@@ -3,16 +3,16 @@
 const Company = require('../models/company-model');
 const ctrl = {};
 
-ctrl.getCompanies = (req, res) =>{
-   Company.get(req.query)
-   .then((data) =>{
-     res.send(data);
-   })
-   .catch((err) =>{
-     res.status(500).send(err);
-   });
- };
 
+ctrl.getCompanies = (req, res) => {
+  Company.get(req.query)
+        .then((data) => {
+            res.send(data);
+        })
+        .catch((err) => {
+            res.status(500).send(err);
+        });
+};
 
 
 ctrl.getCompany = (req, res) =>{
@@ -38,18 +38,18 @@ ctrl.saveCompany = (req, res)=> {
 
 ctrl.updateCompany = (req, res) =>{
   Company.update(req.params.id, req.body)
-  .then(()=>{
+  .then((data)=>{
     res.status(200).send();
   })
-  .cathc((err) =>{
+  .catch((err) =>{
     res.status(500).send(err);
   });
 };
 
 ctrl.removeCompany = (req, res) =>{ //Ajustar para não remover, apenas alterar active para false
   Company.remove(req.params.id)
-  .then(() =>{
-    res.status(200).send();
+  .then((data) =>{
+    res.status(200).send(data);
   })
   .catch((err) =>{
     res.status(500).send(err);
