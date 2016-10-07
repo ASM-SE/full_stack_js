@@ -13,13 +13,13 @@ const schema = new mongoose.Schema({ //Criação de um schema - isso vem do mong
   },
   active: {
     type: Boolean,
-    default: true
+    default: true //vai mandar pro campo porque foi definido o default - mesmo que o campo não seja obrigatório, sempre colocar um valor default
   }
 });
 
 const User = mongoose.model('User', schema); //Ao indicar User ele vai relacionar o coolection no mongodb no plural, no caso users (tive problemas ao criar a collection pois o nome que usei era user)
 
-// .../users?_id=???
+// .../users?_id=??? EXEMPLO DE COMO PASSAR PARAMETRO NA URL
 module.exports.get = (query) =>{
   return User.find(query);
 /*  .then((data) =>{  //Promisses
@@ -27,7 +27,51 @@ module.exports.get = (query) =>{
   }).catch((err) =>{
     console.log(err);
   });*/
+};
+
+module.exports.getById = (_id) => {
+  let _query = { _id };
+  let _fields = {password: false};
+  return User.findOne(_query, _fields);
+};
+
+
+module.exports.save = (user) => {
+ return  new Promise((resolve, reject) => {
+
+     new User(user).save((err, data) => {
+       if(err){
+         return reject(err);
+       }
+       return resolve({_id: data._id});
+     });
+
+  });
+
+};
+
+
+
+module.exports.update = (_id, user) =>{
+  let _query = { _id }; //mesma coisa se eu fizer _id : _id
+  return User.update(_query, user);
+};
+
+
+module.exports.remove = (_id) =>{
+  let _query = { _id };
+  return User.remove(_query);
 }
+
+
+
+
+
+
+
+
+
+
 
 
 /*
