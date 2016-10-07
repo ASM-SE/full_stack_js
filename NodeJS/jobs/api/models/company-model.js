@@ -1,4 +1,64 @@
 'use strict';
+
+const mongoose = require('mongoose');
+
+const schema = new mongoose.Schema({
+    name: {
+      type: String,
+      required: true
+    },
+    segment: {
+      type: String,
+      required: true
+    },
+    email: {
+      type: String,
+      required: true
+    },
+    site: {
+      type: String,
+      required: true
+    },
+    city: {
+      type: String,
+      required: true
+    },
+    tecnologies: {
+      type: String,
+      required: true
+    },
+    active: {
+      type: Boolean,
+      default: true
+    }
+});
+
+const Company = mongoose.model('Company', schema);
+
+module.exports.get = (query) => {
+  return Company.find(query);
+};
+
+
+module.exports.getById = (_id) => {
+  let _query = { _id };
+  return Company.findOne(_query);
+};
+
+module.exports.save = (company) =>{
+  return new Promise((resolve, reject) => {
+    new Company(company).save((err, data) =>{
+      if(err){
+        return reject(err);
+      }
+      return resolve({_id: data._id});
+    });
+  });
+};
+
+
+
+/*ANTES DO MONGODB
 let companies = [];
 
 class Company {
@@ -10,6 +70,9 @@ class Company {
     this.city = city;
     this.tecnologies = tecnologies;
   }
+
+
+
 
   save() {
     companies.push(this);
@@ -38,4 +101,4 @@ class Company {
 
 
 }
-module.exports = Company;
+module.exports = Company;*/
