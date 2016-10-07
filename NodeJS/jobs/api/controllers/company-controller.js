@@ -14,6 +14,7 @@ ctrl.getCompanies = (req, res) =>{
  };
 
 
+
 ctrl.getCompany = (req, res) =>{
   Company.getById(req.params.id)
   .then((data) =>{
@@ -29,6 +30,26 @@ ctrl.saveCompany = (req, res)=> {
   Company.save(req.body)
   .then((data) =>{
     res.status(201).send(data);
+  })
+  .catch((err) =>{
+    res.status(500).send(err);
+  });
+};
+
+ctrl.updateCompany = (req, res) =>{
+  Company.update(req.params.id, req.body)
+  .then(()=>{
+    res.status(200).send();
+  })
+  .cathc((err) =>{
+    res.status(500).send(err);
+  });
+};
+
+ctrl.removeCompany = (req, res) =>{ //Ajustar para não remover, apenas alterar active para false
+  Company.remove(req.params.id)
+  .then(() =>{
+    res.status(200).send();
   })
   .catch((err) =>{
     res.status(500).send(err);

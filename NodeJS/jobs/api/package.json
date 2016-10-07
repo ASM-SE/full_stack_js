@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prestart": "npm install",
-    "start": "nodemon ./bin/www", 
-    },
+    "start": "nodemon ./bin/www"
+  },
   "author": "Opensanca",
   "license": "ISC",
   "dependencies": {

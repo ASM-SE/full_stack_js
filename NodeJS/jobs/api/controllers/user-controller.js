@@ -32,7 +32,7 @@ ctrl.saveUser = (req, res) => {
 ctrl.updateUser = (req, res) => {
   User.update(req.params.id, req.body)
   .then(() => {
-    res.status(200).send(data);
+    res.status(200).send();
   })
   .catch((err) =>{
     res.status(500).send(err);

@@ -39,6 +39,12 @@ module.exports.get = (query) => {
   return Company.find(query);
 };
 
+/*
+module.exports.get = (query) => {
+    query.active = true;
+    return Company.find(query);
+}*/
+
 
 module.exports.getById = (_id) => {
   let _query = { _id };
@@ -56,8 +62,18 @@ module.exports.save = (company) =>{
   });
 };
 
+module.exports.update = (_id, company) =>{
+  let _query = { _id };
+  return Company.update(_query, company);
+}
+
+module.exports.remove = (_id) =>{
+  let _query = {_id};
+  return Company.remove(_query);
+}
 
 
+module.exports = Company;
 /*ANTES DO MONGODB
 let companies = [];
 
