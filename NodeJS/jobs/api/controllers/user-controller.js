@@ -4,6 +4,7 @@ const User = require('../models/user-model');
 const ctrl = {};
 
 ctrl.getUsers = (req, res) =>{
+  console.log(req.user); //esse dado vem do basic-auth-middleware, permitindo utilizar o usuário sempre que for preciso
   User.get(req.query)
   .then((data) =>{
     res.send(data);
@@ -69,7 +70,7 @@ ctrl.login = (req, res) =>{
     res.send(data);
   })
   .catch((err) =>{
-        console.log('Usuário inexistente!'); 
+        console.log('Usuário inexistente!');
     res.status(500).send(err);
 
   });

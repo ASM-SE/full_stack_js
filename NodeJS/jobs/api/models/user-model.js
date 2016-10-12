@@ -30,7 +30,7 @@ module.exports.get = (query) =>{
 };
 
 //Autenticacao versão Renan - não verifica se o usário está ativo
-modelo.exports.authorization = (credentials) =>{
+module.exports.authorization = (credentials) =>{
   return User.findOne(credentials);
 }
 
