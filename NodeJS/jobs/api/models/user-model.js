@@ -29,12 +29,19 @@ module.exports.get = (query) =>{
   });*/
 };
 
+//Autenticacao versão Renan - não verifica se o usário está ativo
+modelo.exports.authorization = (credentials) =>{
+  return User.findOne(credentials);
+}
+
 //Autenticacao de usuario
-module.exports.autenticate = (_name, _password) =>{
-  let _query = { name: _name, password: _password, active: true};
-  let _fields = {_id: false,
-                 active: false};
-  return User.find(_query, _fields);
+module.exports.autenticate = (_credentials) =>{
+  console.log(_credentials);
+  let _query = { name: _credentials.name, password: _credentials.password, active: true};
+  //let _fields = {_id: false, active: false};
+  //return User.find(_query, _fields);
+  console.log(_query);
+  return User.findOne(_query);
 
 };
 
