@@ -42,22 +42,6 @@ module.exports = (req, res, next) =>{
 
 
 
-    //Imprime o array multidimensional
-          console.log(this.ordenaLocale(_localeAlone));
-for (var i = 0; i < _localeAlone.length; i++) {
-
-  for (var z = 0; z < _localeAlone[i].length; z++) {
-  console.log("Inicial: "+_localeAlone[i][z]);
-  }
-
-}
-
-}
-
-
-function ordenaLocale(_localeAlone){
- let array_order = [];
-
     for (var i = 0; i < _localeAlone.length; i++) {
 
       if(_localeAlone[i][1] <= _localeAlone[i+1][1] && _localeAlone[i+1][1] != undefined){
@@ -71,10 +55,19 @@ function ordenaLocale(_localeAlone){
       };
 
 
-    }
-   array_order = _localeAlone;
+    };
 
-  return array_order;
+
+    //Imprime o array multidimensional
+          console.log(_localeAlone.length);
+for (var i = 0; i < _localeAlone.length; i++) {
+
+  for (var z = 0; z < _localeAlone[i].length; z++) {
+  console.log("Inicial: "+_localeAlone[i][z]);
+  }
+
+}
+
 }
 
 /*a[0][1] tem q? armazena a[0][0] e o quality a[0][1] na primeira posição ou é undefined? undefined é a prioridade - foi o que considerei
