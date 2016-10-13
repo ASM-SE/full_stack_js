@@ -39,56 +39,76 @@ module.exports = (req, res, next) =>{
 
     };
 
+//Buble ordenação - OK!
+/*var _ordenado;
+do {
+        _ordenado = false;
+         for (var i = 0; i < _localeAlone.length-1; i++) {
 
-    for (var i = 0; i < _localeAlone.length-1; i++) {
-
-      if(_localeAlone[i][1] < _localeAlone[i+1][1]){
-        _aux_locale =  _localeAlone[i][0];
-        _aux_quality = _localeAlone[i][1];
-        _localeAlone[i][0] = _localeAlone[i+1][0];
-        console.log(_localeAlone[i][0]);
-        _localeAlone[i][1] = _localeAlone[i+1][1];
-        console.log(_localeAlone[i][1]);
-        _localeAlone[i+1][0] = _aux_locale;
-        _localeAlone[i+1][1] = _aux_quality;
-
-      };
-
-   };
-
+           if(Number(_localeAlone[i][1]) < Number(_localeAlone[i+1][1])){
+             _aux_locale =  _localeAlone[i][0];
+             _aux_quality = _localeAlone[i][1];
+             _localeAlone[i][0] = _localeAlone[i+1][0];
+             _localeAlone[i][1] = _localeAlone[i+1][1];
+             _localeAlone[i+1][0] = _aux_locale;
+             _localeAlone[i+1][1] = _aux_quality;
+            _ordenado = true;
+           };
 
 
 
-    //Imprime o array multidimensional
-for (var i = 0; i < _localeAlone.length; i++) {
+       };
+   } while (_ordenado);*/
 
-  for (var z = 0; z < _localeAlone[i].length; z++) {
-  console.log("Inicial: "+_localeAlone[i][z]);
+
+//Sort Ordenação - OK!
+var _order_array = _localeAlone.sort(compareSecondColumn);
+function compareSecondColumn(a, b) {
+    if (Number(a[1]) === Number(b[1])) {
+        return 0;
+    }
+    else {
+        return (Number(a[1]) > Number(b[1])) ? -1 : 1;
+    }
+}
+console.log(_order_array);
+
+
+//Imprime o array multidimensional
+var _teste;
+var files = {};
+for (var i = 0; i < _order_array.length; i++) {
+  for (var z = 0; z < _order_array[i].length; z++) {
+
+  if(isNaN(_order_array[i][z])){
+  //  files = fs.readFileSync(`${DIR_PATH}${_order_array[i][z]}.json`)
+  //add(files, `${_order_array[i][z]}`, `require('${DIR_PATH}${_order_array[i][z]}.js')` );
+  files = {
+  [_localeAlone[i][z]] : `require('${DIR_PATH}${_localeAlone[i][z]}.json')`,
+
+  }
+  req.files = files.[_localeAlone[i][z]];
+    return next();
+//  console.log(`${DIR_PATH}${_order_array[i][z]}.json`);
+
   }
 
-}
+};
+};
+console.log(files);
 
 }
 
-/*a[0][1] tem q? armazena a[0][0] e o quality a[0][1] na primeira posição ou é undefined? undefined é a prioridade - foi o que considerei
-Entao tenta achar arquivo... achou, mostra pra usuario, não achou, manda mensagem para usuario e procura outro - continua a ler o array
-a[1][1] tem q? aramazena a[1][0] e o quality a[1][1] na primeira posição ou é undefined? undefined é a prioridade
-a[2][2] tem q? compara com o valor da primeira posição do novo array, se q=a[2][2] > q=a[1][1] aramazena a[2][0] e o quality a[2][1] na primeira posição e coloca o valor antigo na
-nova posição ou é undefined? undefined é a prioridade
-*/
-
-//  console.log(_localeAlone[1][1] > _localeAlone[2][1]);
 
 
 
+/*
 
+files = {
+[_localeAlone[i][z]] : `require('${DIR_PATH}${_localeAlone[i][z]}.js')`,
 
-
-
-
-
-
-/*    for (var i = 0; i < _locale.length; i++) {
+}
+for (var i = 0; i < _locale.length; i++) {
       const files = {
         [_locale[i]]: `require(${DIR_PATH}${_locale[i]}.js)`,
       }
@@ -130,5 +150,5 @@ nova posição ou é undefined? undefined é a prioridade
 //pt;q=0.8,
 //en-US;q=0.6,
 //en;q=0.4'
-  return next(); //se não achar o arquivo de request dar mensagem que o locale não é suportado 440 - bad request
+ //se não achar o arquivo de request dar mensagem que o locale não é suportado 440 - bad request
 }
