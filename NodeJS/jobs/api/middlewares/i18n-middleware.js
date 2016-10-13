@@ -40,26 +40,26 @@ module.exports = (req, res, next) =>{
     };
 
 
+    for (var i = 0; i < _localeAlone.length-1; i++) {
 
-
-    for (var i = 0; i < _localeAlone.length; i++) {
-
-      if(_localeAlone[i][1] <= _localeAlone[i+1][1] && _localeAlone[i+1][1] != undefined){
+      if(_localeAlone[i][1] < _localeAlone[i+1][1]){
         _aux_locale =  _localeAlone[i][0];
         _aux_quality = _localeAlone[i][1];
         _localeAlone[i][0] = _localeAlone[i+1][0];
+        console.log(_localeAlone[i][0]);
         _localeAlone[i][1] = _localeAlone[i+1][1];
+        console.log(_localeAlone[i][1]);
         _localeAlone[i+1][0] = _aux_locale;
         _localeAlone[i+1][1] = _aux_quality;
 
       };
 
+   };
 
-    };
+
 
 
     //Imprime o array multidimensional
-          console.log(_localeAlone.length);
 for (var i = 0; i < _localeAlone.length; i++) {
 
   for (var z = 0; z < _localeAlone[i].length; z++) {
