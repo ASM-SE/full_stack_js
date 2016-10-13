@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html data-ng-app="jobs">  <!--Se a aplicação inteira vai sar do angular, você coloca essa diretiva no body
+                        Para permitir que o validador do w3c valide o codigo com o angular coloca-se a
+                        palavra data- antes de todas as diretivas-->
+  <head>
+    <meta charset="utf-8">
+    <title>Página!</title>
+  </head>
+  <body>
+    <h1>Cadastro do:{{$id}} {{name}} {{password}}</h1>
+    <form data-ng-controller="UserController"> <!--Controlador que será utilizado-->
+      <input type="text" id="name" data-ng-model="name">
+      <input type="password" id="password" data-ng-model="password">
+      <button type="button" name="button" data-ng-click="save()">Login</button>
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script type="text/javascript">
+    let app = angular.module('jobs', []);
+
+    app.controller('UserController', ($scope) =>{
+        $scope.name = 'teste';
+
+        $scope.save = ()=>{
+          console.log($scope.name, $scope.password); //Variaveis do angular são definidas com "$"
+        }
+    });
+    </script>
+  </body>
+</html>

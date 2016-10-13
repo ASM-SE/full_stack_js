@@ -54,9 +54,6 @@ do {
              _localeAlone[i+1][1] = _aux_quality;
             _ordenado = true;
            };
-
-
-
        };
    } while (_ordenado);*/
 
@@ -83,19 +80,25 @@ for (var i = 0; i < _order_array.length; i++) {
   if(isNaN(_order_array[i][z])){
   //  files = fs.readFileSync(`${DIR_PATH}${_order_array[i][z]}.json`)
   //add(files, `${_order_array[i][z]}`, `require('${DIR_PATH}${_order_array[i][z]}.js')` );
-  files = {
+  /*files = {
   [_localeAlone[i][z]] : `require('${DIR_PATH}${_localeAlone[i][z]}.json')`,
+}*/
 
+  files = {
+    pa : `require('${DIR_PATH}${_localeAlone[i][z]}.json')`,
   }
-  req.files = files.[_localeAlone[i][z]];
-    return next();
+
+//  console.log(files._localeAlone[i][z]);
+  //req.files = files._localeAlone[i][z];
+console.log(files.pa);
+req.files = files.pa;
 //  console.log(`${DIR_PATH}${_order_array[i][z]}.json`);
 
   }
 
 };
 };
-console.log(files);
+
 
 }
 
@@ -151,4 +154,5 @@ for (var i = 0; i < _locale.length; i++) {
 //en-US;q=0.6,
 //en;q=0.4'
  //se não achar o arquivo de request dar mensagem que o locale não é suportado 440 - bad request
+     return next();
 }

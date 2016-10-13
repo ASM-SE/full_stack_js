@@ -16,7 +16,7 @@ module.exports = (req, res, next) =>{
   let _basicHeader = req.headers.authorization || ''; //se o primeiro item não existir ele pega uma propriedade vazia
   let _basicHeaderData = _basicHeader.split(' ');
   if(_basicHeaderData && _basicHeaderData[0] !== AUTHORIZATION_METHOD){ //primeira verificacao olha se ele existe
-    return res.status(403).send(req.messages.forbidden);
+    return res.status(403).send(req.files.forbidden);
   }
 
   let _basicAuthCreentialData = (new Buffer(_basicHeaderData[1], 'base64')).toString('utf8').split(':');
@@ -32,9 +32,9 @@ module.exports = (req, res, next) =>{
       req.user = data;
       return next();
     }
-      return res.status(401).send();
+      return res.status(401).send(req.files.forbidden);
   }).catch((err) =>{
-      return res.status(401).send();
+      return res.status(401).send(req.files.forbidden);
   });
 
 //Como a ordem dos Middlewares interferem, este deve ficar antes para que seja possivel utilziar
