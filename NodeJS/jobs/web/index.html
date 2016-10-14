@@ -7,24 +7,37 @@
     <title>Página!</title>
   </head>
   <body>
-    <h1>Cadastro do:{{$id}} {{name}} {{password}}</h1>
-    <form data-ng-controller="UserController"> <!--Controlador que será utilizado-->
-      <input type="text" id="name" data-ng-model="name">
-      <input type="password" id="password" data-ng-model="password">
+
+    <main  data-ng-controller="UserController"><!--Controlador que será utilizado-->
+    <h1>User</h1>
+    <form>
+      <input type="text" id="name" data-ng-model="user.name">
+      <input type="password" id="password" data-ng-model="users.password">
       <button type="button" name="button" data-ng-click="save()">Login</button>
     </form>
 
+
+    <ul>
+      <li data-ng-repeat="user in users">{{user.name}}</li>
+    </ul>
+    </main>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script type="text/javascript">
-    let app = angular.module('jobs', []);
+    <script src="js/app.js"></script>
+    <script src="js/controllers/user-controller.js"></script>
 
-    app.controller('UserController', ($scope) =>{
-        $scope.name = 'teste';
+<!--Quando definimos no corpo do HTML:
+<script type="text/javascript">
+let app = angular.module('jobs', []); //se não passar o array vazio ele vai buscar nas variaveis de dependencia >> <script src="js/app.js"></script>
 
-        $scope.save = ()=>{
-          console.log($scope.name, $scope.password); //Variaveis do angular são definidas com "$"
-        }
-    });
-    </script>
+app.controller('UserController', ($scope) =>{
+    $scope.name = 'teste';
+
+    $scope.save = ()=>{
+      console.log($scope.name, $scope.password); //Variaveis do angular são definidas com "$"
+    }
+});
+</script>-->
+
   </body>
 </html>
