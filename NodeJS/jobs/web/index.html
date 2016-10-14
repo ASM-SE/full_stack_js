@@ -12,14 +12,15 @@
     <h1>User</h1>
     <form>
       <input type="text" id="name" data-ng-model="user.name">
-      <input type="password" id="password" data-ng-model="users.password">
+      <input type="password" id="password" data-ng-model="user.password">
       <button type="button" name="button" data-ng-click="save()">Login</button>
     </form>
 
 
-    <ul>
+    <ul data-ng-init="initUsers()"> <!--Função que é chamada quando este elemento for apresentado na tela-->
       <li data-ng-repeat="user in users">{{user.name}}</li>
     </ul>
+
     </main>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
