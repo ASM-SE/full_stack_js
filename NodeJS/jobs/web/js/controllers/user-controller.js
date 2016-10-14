@@ -2,16 +2,26 @@
   'use strict';
   angular.module('jobs').controller('UserController', controller);
 
-  controller.$inject = ['$scope']; //injentando dependencias segundo o jhonpapa https://github.com/johnpapa/angular-styleguide
+  controller.$inject = []; //injentando dependencias segundo o jhonpapa https://github.com/johnpapa/angular-styleguide
 
-  function controller($scope){
-    $scope.initUsers = () =>{ //funcção que incializa a lista -- elemento ul na index.html
-      $scope.users = [];
+  function controller(){
+    const vm = this; //view model - como definido por john papa
+
+
+    vm.initUsers = () =>{ //funcção que incializa a lista -- elemento ul na index.html
+      vm.users = [];
     }
 
-    $scope.save = function(){
-      $scope.users.push($scope.user);
-      $scope.user = {};
+    vm.save = (user) =>{
+      vm.users.push(user);
+      vm.user = {};
+    }
+
+
+    vm.deleteSelected = (users) =>{
+      vm.users = vm.users.filter((user)=>{
+        return !user.selected;
+      });
     }
   }
 

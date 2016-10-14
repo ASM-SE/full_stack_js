@@ -1,24 +1,28 @@
 <!DOCTYPE html>
-<html data-ng-app="jobs">  <!--Se a aplicação inteira vai sar do angular, você coloca essa diretiva no body
+<html data-ng-app="jobs" data-ng-cloak>  <!--Se a aplicação inteira vai sar do angular, você coloca essa diretiva no body
                         Para permitir que o validador do w3c valide o codigo com o angular coloca-se a
-                        palavra data- antes de todas as diretivas-->
+                        palavra data- antes de todas as diretivas
+                       data-ng-cloak remove a apresentação das expressões, ou reduz o tempo em alguns casos-->
   <head>
     <meta charset="utf-8">
     <title>Página!</title>
   </head>
   <body>
 
-    <main  data-ng-controller="UserController"><!--Controlador que será utilizado-->
+    <main  data-ng-controller="UserController as vm"><!--Controlador que será utilizado - apelido vm por utilizar no js-->
     <h1>User</h1>
     <form>
-      <input type="text" id="name" data-ng-model="user.name">
-      <input type="password" id="password" data-ng-model="user.password">
-      <button type="button" name="button" data-ng-click="save()">Login</button>
+      <input type="text" id="name" data-ng-model="vm.user.name">
+      <input type="password" id="password" data-ng-model="vm.user.password">
+      <button type="button" name="button" data-ng-click="vm.save(vm.user)">Login</button>
     </form>
 
-
-    <ul data-ng-init="initUsers()"> <!--Função que é chamada quando este elemento for apresentado na tela-->
-      <li data-ng-repeat="user in users">{{user.name}}</li>
+    <button type="button" data-ng-click="vm.deleteSelected(vm.user)">Delete Selected</button>
+    <ul data-ng-init="vm.initUsers()"> <!--Função que é chamada quando este elemento for apresentado na tela-->
+      <li data-ng-repeat="user in vm.users">
+        <input type="checkbox" data-ng-model="user.selected">
+        {{user.name}}
+      </li>
     </ul>
 
     </main>
