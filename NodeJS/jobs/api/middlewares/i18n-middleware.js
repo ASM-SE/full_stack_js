@@ -73,6 +73,7 @@ console.log(_order_array);
 
 //Imprime o array multidimensional
 var _teste;
+var teste;
 var files = {};
 for (var i = 0; i < _order_array.length; i++) {
   for (var z = 0; z < _order_array[i].length; z++) {
@@ -82,15 +83,19 @@ for (var i = 0; i < _order_array.length; i++) {
   //add(files, `${_order_array[i][z]}`, `require('${DIR_PATH}${_order_array[i][z]}.js')` );
   /*files = {
   [_localeAlone[i][z]] : `require('${DIR_PATH}${_localeAlone[i][z]}.json')`,
+    pa : `require('${DIR_PATH}${_localeAlone[i][z]}.json')`,
 }*/
 
   files = {
-    pa : `require('${DIR_PATH}${_localeAlone[i][z]}.json')`,
+    pa : require(`../i18n/${_localeAlone[i][z]}.json`),
   }
-
+teste = files.pa;
 //  console.log(files._localeAlone[i][z]);
   //req.files = files._localeAlone[i][z];
-console.log(files.pa);
+//console.log(files.pa);
+console.log(teste.forbidden);
+//console.log(teste.forbidden);
+//console.log(messages.en);
 req.files = files.pa;
 //  console.log(`${DIR_PATH}${_order_array[i][z]}.json`);
 

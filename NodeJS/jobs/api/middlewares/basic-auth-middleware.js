@@ -32,9 +32,9 @@ module.exports = (req, res, next) =>{
       req.user = data;
       return next();
     }
-      return res.status(401).send(req.files.forbidden);
+      return res.status(401).send(/*Something here*/);
   }).catch((err) =>{
-      return res.status(401).send(req.files.forbidden);
+      return res.status(401).send(/*Something here*/);
   });
 
 //Como a ordem dos Middlewares interferem, este deve ficar antes para que seja possivel utilziar
