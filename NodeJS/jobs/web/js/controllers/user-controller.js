@@ -1,20 +1,39 @@
 (function(angular){
   'use strict';
+  //const API_PATH = 'http://localhost:3000'; vai sar passado na injeção de dependências - definida em uma constante
+
+
+
   angular.module('jobs').controller('UserController', controller);
 
-  controller.$inject = []; //injentando dependencias segundo o jhonpapa https://github.com/johnpapa/angular-styleguide
+  controller.$inject = ['UserService']; //injentando dependencias segundo o jhonpapa https://github.com/johnpapa/angular-styleguide
 
-  function controller(){
+  function controller(UserService){
     const vm = this; //view model - como definido por john papa
 
 
     vm.initUsers = () =>{ //funcção que incializa a lista -- elemento ul na index.html
-      vm.users = [];
+      UserService.getUsers()
+      .then((res) =>{
+        vm.users =  res.data;
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+
+
     }
 
     vm.save = (user) =>{
-      vm.users.push(user);
-      vm.user = {};
+      UserService.saveUser(user)
+      .then((res) =>{
+        vm.user = {};
+        vm.initUsers();
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+
     }
 
 

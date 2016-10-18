@@ -7,6 +7,7 @@ const express = require('express'); //isntalado como npm install --save express
 const bodyParser = require('body-parser');
 const authMiddleware = require('./middlewares/basic-auth-middleware');
 const i18nMiddleware = require('./middlewares/i18n-middleware');
+const cors = require('cors');
 const app = express();//app se torna um gerenciador de rotas
 
 
@@ -14,13 +15,14 @@ const app = express();//app se torna um gerenciador de rotas
 //Para definir um middleware na aplicação deve ser usado o use e dentro da mesma uma função
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json()); //faça o parser em json - junta os pacotes enviados, une e retorna
+app.use(cors());
 
 //Middleware de internacionalização
-app.use(i18nMiddleware);
+//app.use(i18nMiddleware); //Ajustar, está com problema!! Não retorna os usuários
 
 //Criando um middleware interceptador
 //a ordem de inserção dos middlewares importa, neste caso o bodyParser será executado primeiro, logo os resultado pode ser alterado devido a ordem
-app.use(authMiddleware);
+//app.use(authMiddleware);
 
 //Config Routes
 app.use(require('./routes/company-route')); //use espera que o que seja passado seja uma rota
