@@ -1,6 +1,5 @@
 'use strict';
 
-
 const HEADER_PROPERT = 'accept-language';
 const DIR_PATH = `${__dirname}/i18n/`;
 const fs = require('fs');
@@ -71,67 +70,45 @@ function compareSecondColumn(a, b) {
 console.log(_order_array);
 
 
-//Imprime o array multidimensional
-var _teste;
-var teste;
 var files = {};
 for (var i = 0; i < _order_array.length; i++) {
   for (var z = 0; z < _order_array[i].length; z++) {
 
   if(isNaN(_order_array[i][z])){
-  //  files = fs.readFileSync(`${DIR_PATH}${_order_array[i][z]}.json`)
-  //add(files, `${_order_array[i][z]}`, `require('${DIR_PATH}${_order_array[i][z]}.js')` );
-  /*files = {
-  [_localeAlone[i][z]] : `require('${DIR_PATH}${_localeAlone[i][z]}.json')`,
-    pa : `require('${DIR_PATH}${_localeAlone[i][z]}.json')`,
-}*/
 
-  files = {
-    pa : require(`../i18n/${_localeAlone[i][z]}.json`),
-  }
-teste = files.pa;
-//  console.log(files._localeAlone[i][z]);
-  //req.files = files._localeAlone[i][z];
-//console.log(files.pa);
-console.log(teste.forbidden);
-//console.log(teste.forbidden);
-//console.log(messages.en);
-req.files = files.pa;
-//  console.log(`${DIR_PATH}${_order_array[i][z]}.json`);
+          files = {
+            pa : require(`../i18n/${_localeAlone[i][z]}.json`),
+          }
 
-  }
+          if(files.pa.forbidden != undefined){
+              console.log(`../i18n/${_localeAlone[i][z]}.json`);
+              console.log(files.pa.forbidden);
+              req.files = files.pa;
+              return next();
+          }
+        }
+      };
+    };
 
-};
-};
-
+}
 
 }
 
 
 
-
-/*
-
-files = {
-[_localeAlone[i][z]] : `require('${DIR_PATH}${_localeAlone[i][z]}.js')`,
-
-}
-for (var i = 0; i < _locale.length; i++) {
-      const files = {
-        [_locale[i]]: `require(${DIR_PATH}${_locale[i]}.js)`,
-      }
-    //  console.log(files);
-  }*/
-  //  console.log("Tamanho array:" + _var);
-  //  const _localeAlone = _locale[0].split(',') || _locale[0];
-  //  console.log(_localeAlone);
-    //const files = fs.readFileSync(`${__dirname}/i18n/empresas-sao-carlos.xlsx`)
-
-//  let _locale
-
-//const files = fs.readFileSync(`${__dirname}/i18n/empresas-sao-carlos.xlsx`)
-
-
+/* VER COM RENAN COMO FUNCIONA
+ fs.stat( `../i18n/${_localeAlone[i][z]}.json`, function(err, stat) {
+     if (err) {
+         if ('ENOENT' == err.code) {
+             //file did'nt exist so for example send 404 to client
+         } else {
+             //it is a server error so for example send 500 to client
+         }
+     } else {
+       console.log(`../i18n/${_localeAlone[i][z]}.json`);
+         //every thing was ok so for example you can read it and send it to client
+     }
+ } );*/
 
 //divide o cabecalho e vê quantos locales foram enviados
 //procura o primeiro locale nos arquivos da pasta i18n
@@ -159,5 +136,3 @@ for (var i = 0; i < _locale.length; i++) {
 //en-US;q=0.6,
 //en;q=0.4'
  //se não achar o arquivo de request dar mensagem que o locale não é suportado 440 - bad request
-     return next();
-}
