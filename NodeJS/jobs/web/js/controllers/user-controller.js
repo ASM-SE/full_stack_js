@@ -37,11 +37,22 @@
     }
 
 
-    vm.deleteSelected = (users) =>{
-      vm.users = vm.users.filter((user)=>{
-        return !user.selected;
+    vm.deleteSelected = (users) => {
+      let _usersToRemove = users.filter((user) => {
+        return user.selected
       });
-    }
-  }
+
+      UserService.removeAll(_usersToRemove)
+      .then((res) =>{
+        vm.initUsers();
+      })
+      .catch((err)=>{
+        console.log(err);
+      });
+
+
+    };
+
+}
 
 })(window.angular);

@@ -3,9 +3,9 @@
 
  angular.module('jobs').service('UserService', service);
 
- service.$inject = ['$http', 'api'];
+ service.$inject = ['$http', 'api', '$q'];
  //segue o padrão singleton - tem uma instância única para toda a aplicação
- function service($http, api){
+ function service($http, api, $q){
    const svc = this;
 
    svc.getUsers = () =>{
@@ -14,8 +14,22 @@
 
    svc.saveUser = (user) =>{
        return $http.post(api.user, user);
-     };
-   }
+    };
 
+   svc.remove = (id) => {
+     return $http.delete(`${api.user}/${id}`)
+
+   };
+
+   svc.removeAll = (users) =>{
+       let promises = users.map((user)=>{
+         return svc.remove(user._id);
+       });
+
+       return $q.all(promises);
+     };
+
+
+}
 
 })(window.angular);

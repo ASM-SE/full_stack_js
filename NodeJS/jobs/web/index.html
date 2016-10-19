@@ -17,7 +17,7 @@
       <button type="button" name="button" data-ng-click="vm.save(vm.user)">Login</button>
     </form>
 
-    <button type="button" data-ng-click="vm.deleteSelected(vm.user)">Delete Selected</button>
+    <button type="button" data-ng-click="vm.deleteSelected(vm.users)">Delete Selected</button>
     <ul data-ng-init="vm.initUsers()"> <!--Função que é chamada quando este elemento for apresentado na tela-->
       <li data-ng-repeat="user in vm.users">
         <input type="checkbox" data-ng-model="user.selected">
@@ -30,7 +30,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/config/api-config.js"></script>
-    <script src="js/services/user-service.js"></script>         
+    <script src="js/services/user-service.js"></script>
     <script src="js/controllers/user-controller.js"></script>
 
 
