@@ -1,5 +1,6 @@
 (function(angular){
   'use strict';
-  angular.module('login', []);
+  //Passa jobs como um importe para que funcione
+  angular.module('login', ['jobs']);
 
 })(window.angular);
