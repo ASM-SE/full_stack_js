@@ -1,5 +1,6 @@
 (function(angular){
   'use strict';
-  angular.module('jobs', []);
+
+  angular.module('jobs', ['config']);
 
 })(window.angular);

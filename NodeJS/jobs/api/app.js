@@ -22,7 +22,7 @@ app.use(cors());
 
 //Criando um middleware interceptador
 //a ordem de inserção dos middlewares importa, neste caso o bodyParser será executado primeiro, logo os resultado pode ser alterado devido a ordem
-//app.use(authMiddleware);
+app.use(authMiddleware);
 
 //Config Routes
 app.use(require('./routes/company-route')); //use espera que o que seja passado seja uma rota

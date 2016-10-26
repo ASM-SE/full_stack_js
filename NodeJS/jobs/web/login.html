@@ -6,13 +6,31 @@
   </head>
   <body>
 
+    <form data-ng-controller="LoginController as vm" data-ng-submit="vm.authenticate(vm.user)">
+      <label for="name">Name</label> <!--Required não funciona no safari-->
+      <input type="text" id="name" required data-ng-model="vm.user.name">
+
+      <br><br>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" required data-ng-model="vm.user.password">
+
+      <br>
+        <p data-ng-if="vm.invalidUser">Usuário ou senha inválidos!</p>
+      <br>
+      <!--Com metodos que consideram validação de formulário não se usa o ng-click-->
+      <button type="submit">Login</button>
+
+    </form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <!--Importa os dois app e inclui eles como dependência no login-app.js-->
-    <script src="js/app.js"></script>
+    <script src="js/config-app.js"></script>
     <script src="js/config/api-config.js"></script>
 
+    <script src="js/app.js"></script>
     <script src="js/login-app.js"></script>
+    <script src="js/controllers/login-controller.js"></script>
+    <script src="js/services/login-service.js"></script>
 
   </body>
 </html>

@@ -1,6 +1,6 @@
 (function(angular){
  'use strict'
 
- angular.module('login', ['config']);
+ angular.module('config', []);
 
 })(window.angular);

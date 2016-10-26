@@ -16,6 +16,9 @@ ctrl.getUsers = (req, res) =>{
 };
 
 
+ctrl.getProfile = (req, res) =>{
+  res.status(200).json(req.user);
+}
 
 
 ctrl.saveUser = (req, res) => {
