@@ -7,35 +7,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!--Configuração para ser responsivo, com essa tag o tamanho do body vai respeitar o tamanho da tela-->
     <meta charset="utf-8">
     <title>Página!</title>
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
   </head>
   <body>
 
     <main  data-ng-controller="UserController as vm"><!--Controlador que será utilizado - apelido vm por utilizar no js-->
     <h1>User</h1>
-    <form>
-      <input type="text" id="name" data-ng-model="vm.user.name">
-      <input type="password" id="password" data-ng-model="vm.user.password">
-      <button type="button" name="button" data-ng-click="vm.save(vm.user)">Login</button>
+
+    <form layout="column" layout-padding>
+    <div layout="row" layout-xs="column" >
+      <md-input-container flex>
+        <label for="name">Name</label>
+        <input type="text" id="name" data-ng-model="vm.user.name" required>
+      </md-input-container>
+      <md-input-container flex>
+        <label for="password">Password</label>
+        <input type="password" id="password" data-ng-model="vm.user.password" required>
+      </md-input-container>
+    </div>
+
+      <div layout="row" layout-align="end center"><!--xs é propriedade para layout <div layout="row" layout-align="end center" layout-align-xs="space-around center">-->
+        <md-button type="button" class="md-raised" hide-xs>Back</md-button><!--esconde se for xs (mobile)-->
+        <md-button type="button" class="md-raised md-warn">Delete</md-button>
+        <md-button type="submit" class="md-primary md-raised">Save</md-button>
+      </div>
+
     </form>
 
-    <button type="button" data-ng-click="vm.deleteSelected(vm.users)">Delete Selected</button>
-    <ul data-ng-init="vm.initUsers()"> <!--Função que é chamada quando este elemento for apresentado na tela-->
-      <li data-ng-repeat="user in vm.users">
-        <input type="checkbox" data-ng-model="user.selected">
-        {{user.name}}
-      </li>
-    </ul>
 
     </main>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="lib/angular-cookies.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script> <!--deixar n amesma versão, deixar todos na mesma versão, somente se for do core, o material não é do core e não segue a versão-->
+  <!--deixar n amesma versão, deixar todos na mesma versão, somente se for do core, o material não é do core e não segue a versão-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
-
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
     <script src="js/config-app.js"></script>
     <script src="js/config/api-config.js"></script>
 
