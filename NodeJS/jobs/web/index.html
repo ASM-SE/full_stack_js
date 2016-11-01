@@ -4,8 +4,10 @@
                         palavra data- antes de todas as diretivas
                        data-ng-cloak remove a apresentação das expressões, ou reduz o tempo em alguns casos-->
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!--Configuração para ser responsivo, com essa tag o tamanho do body vai respeitar o tamanho da tela-->
     <meta charset="utf-8">
     <title>Página!</title>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
   </head>
   <body>
 
@@ -27,8 +29,13 @@
 
     </main>
 
-    <script src="lib/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="lib/angular-cookies.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script> <!--deixar n amesma versão, deixar todos na mesma versão, somente se for do core, o material não é do core e não segue a versão-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
     <script src="js/config-app.js"></script>
     <script src="js/config/api-config.js"></script>
 
