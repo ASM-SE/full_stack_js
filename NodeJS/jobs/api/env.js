@@ -11,10 +11,12 @@ env.server = {  //cria-se categorias para melhor dividir o código -
 };
 
 env.database = {
-  uri: process.env.DATABASE_URI  || 'mongodb://localhost:27017/jobs-db', //colocar o nome do banco, no caso jobs-db
+  //configurando para utilizar o banco de dados do mlab.com
+  //uri: process.env.DATABASE_URI  || 'mongodb://localhost:27017/jobs-db', //colocar o nome do banco, no caso jobs-db
+  uri: process.env.DATABASE_URI  || '@ds037165.mlab.com:37165/jobs',
   credentials: {
-    user: process.env.DATABASE_URI || '',
-    pass: process.env.DATABASE_URI || '',
+    user: process.env.DATABASE_URI || 'jobsuser',
+    pass: process.env.DATABASE_URI || '78a85s',
   }
 };
 
