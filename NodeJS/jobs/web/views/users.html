@@ -1,0 +1,6 @@
+<ul data-ng-init="vm.initUsers()"> <!--Função que é chamada quando este elemento for apresentado na tela-->
+  <li data-ng-repeat="user in vm.users">
+    <input type="checkbox" data-ng-model="user.selected">
+    {{user.name}}
+  </li>
+</ul>
