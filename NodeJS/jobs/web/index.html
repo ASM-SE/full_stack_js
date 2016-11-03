@@ -11,28 +11,24 @@
   </head>
   <body>
 
-    <header data-ng-controller="MenuController as vm">
-      <nav>
-        <md-content>
 
-            <md-sidenav
-                class="md-sidenav-left"
-                md-component-id="left">
-                <h2>Menu</h2>
-
-            </md-sidenav>
-
-
-            <md-toolbar>
-              <div class="md-toolbar-tools">
+        <header data-ng-controller="MenuController as vm">
+          <nav>
+            <md-content>
+              <md-toolbar>
+                <div class="md-toolbar-tools">
                   <md-button data-ng-click="vm.toggleMenu()">Menu</md-button>
                   <h1>Jobs App</h1>
-              </div>
+                </div>
+              </md-toolbar>
+            </md-content>
 
-            </md-toolbar>
-          </md-content>
-      </nav>
-      </header>
+            <md-sidenav class="md-sidenav-left" md-component-id="left">
+                <h2>Menu</h2>
+            </md-sidenav>
+          </nav>
+        </header>
+
 
 
 
