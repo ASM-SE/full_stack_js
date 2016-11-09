@@ -1,6 +1,20 @@
-<ul data-ng-init="vm.initUsers()"> <!--Função que é chamada quando este elemento for apresentado na tela-->
-  <li data-ng-repeat="user in vm.users">
-    <input type="checkbox" data-ng-model="user.selected">
-    {{user.name}}
-  </li>
-</ul>
+<form layout="column" layout-padding>
+<div layout="row">
+  <md-input-container flex>
+    <label for="name">Name</label>
+    <input type="text" id="name" data-ng-model="vm.filter.name">
+  </md-input-container>
+</div>
+</form>
+
+<md-list data-ng-init="vm.initList()">
+  <md-list-item data-ng-repeat="user in vm.users" data-ng-click="vm.edit(user)">
+     <p>{{user.name}}</p>
+  </md-list-item>
+</md-list>
+
+<div layout="row" flex layout-align="end end">
+  <md-button class="md-fab" aria-label="Add" data-ng-click="vm.new()"
+
+
+</div>

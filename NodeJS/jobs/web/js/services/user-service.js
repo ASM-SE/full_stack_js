@@ -8,11 +8,19 @@
  function service($http, api, $q){
    const svc = this;
 
+
+   svc.getUser = (_id) =>{
+     return $http.get(api.user + '/' + _id );
+   }
+
    svc.getUsers = () =>{
      return $http.get(api.users);
    };
 
    svc.saveUser = (user) =>{
+     if(user._id){
+       return $http.put(api.user + '/' + user._id, user);
+     }
        return $http.post(api.user, user);
     };
 
