@@ -13,7 +13,7 @@
       loginService.authenticate(user)
       .then((resp)=>{
         console.log(resp.data);
-        $window.location.href = 'index';
+        $window.location.href = '/';
       })
       .catch(() =>{
         vm.invalidUser = true;
