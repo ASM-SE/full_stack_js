@@ -13,7 +13,8 @@
            .icon('social:people_pin', '/img/icons/ic_person_pin.svg')
            .icon('admin:business', '/img/icons/ic_business.svg')
            .icon('admin:jobs', '/img/icons/ic_work.svg')
-           .icon('admin:logout', '/img/icons/ic_exit.svg');
+           .icon('admin:logout', '/img/icons/ic_exit.svg')
+           .icon('social:addperson', '/img/icons/ic_person.svg');
 
   }
 
