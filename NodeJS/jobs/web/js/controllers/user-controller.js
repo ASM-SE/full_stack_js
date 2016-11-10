@@ -11,12 +11,15 @@
   function controller(UserService, $routeParams){
     const vm = this; //view model - como definido por john papa
 
+
+
     vm.initForm = () => {
       let _id = $routeParams.id;
       if(_id){
         UserService.getUser(_id)
         .then((res) => {
             vm.user = res.data;
+            openToast();
         })
       }
     };
