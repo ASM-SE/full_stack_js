@@ -33,15 +33,15 @@
                     <h1 class="md-toolbar-tools">{{sections.title}}</h1>
                   </md-toolbar>
 
+                  <md-content>
                     <md-list>
                       <md-list-item class="md-1-line" data-ng-repeat="item in sections.itens" data-ng-click="vm.goTo(item)">
                         <md-icon md-svg-icon="{{item.icon}}" aria-label="{{item.title}}">
                         </md-icon>
-                        <div class="md-list-item-text" layout="column">
-                         <p>{{item.title}}</p>
-                       </div>
+                          <span flex class="md-list-item-text"> <p>{{item.title}}</p></span>
                       </md-list-item>
-                  </md-list>
+                   </md-list>
+                 </md-content>
                 </ng-repeat>
             </md-sidenav>
           </nav>
@@ -71,7 +71,7 @@
     <script src="js/config/http-config.js"></script>
     <script src="js/config/route-config.js"></script>
     <script src="js/config/icon-config.js"></script>
-    <script src="js/services/toast-service.js"></script>    
+    <script src="js/services/toast-service.js"></script>
     <script src="js/interceptors/basic-auth-interceptor.js"></script>
     <script src="js/services/user-service.js"></script>
     <script src="js/controllers/user-controller.js"></script>
