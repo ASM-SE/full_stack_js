@@ -27,7 +27,12 @@
 
             <md-sidenav class="md-sidenav-left" md-component-id="left">
                 <ng-repeat data-ng-repeat="sections in vm.sections">
-                  <md-subheader>{{sections.title}}</md-subheader>
+                <!--  <md-subheader>{{sections.title}}</md-subheader>-->
+
+                  <md-toolbar class="md-theme-indigo">
+                    <h1 class="md-toolbar-tools">{{sections.title}}</h1>
+                  </md-toolbar>
+
                     <md-list>
                       <md-list-item class="md-1-line" data-ng-repeat="item in sections.itens" data-ng-click="vm.goTo(item)">
                         <md-icon md-svg-icon="{{item.icon}}" aria-label="{{item.title}}">

@@ -12,8 +12,7 @@
 </div>
 
   <div layout="row" layout-align="end center"><!--xs é propriedade para layout <div layout="row" layout-align="end center" layout-align-xs="space-around center">-->
-    <md-button type="button" class="md-raised" hide-xs>Back</md-button><!--esconde se for xs (mobile)-->
-    <md-button type="button" class="md-raised md-warn" data-ng-click="vm.remove(vm.user)">Delete</md-button>
+    <md-button type="button" class="md-raised md-warn" data-ng-show="vm.user._id" data-ng-click="vm.remove(vm.user)">Delete</md-button>
     <md-button type="submit" class="md-primary md-raised">Save</md-button>
   </div>
 

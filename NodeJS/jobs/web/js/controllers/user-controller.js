@@ -11,11 +11,11 @@
   function controller(UserService, $routeParams){
     const vm = this; //view model - como definido por john papa
 
-    vm.InitForm = () => {
-      let _id = $routeParams.params.id;
-
+    vm.initForm = () => {
+      let _id = $routeParams.id;
       if(_id){
-        UserService.getUser(_id).then((res) => {
+        UserService.getUser(_id)
+        .then((res) => {
             vm.user = res.data;
         })
       }
@@ -27,20 +27,15 @@
       .then((res) =>{
         if(!user._id){
           user._id = res.data._id;
-        }
-        vm.user._id = res.data_id;
-      })
-      .catch((err)=>{
-        console.log(err);
-      })
-
-    }
+      }
+    })
+  };
 
 
     vm.remove = (user) => {
       UserService.remove(user._id)
       .then((res) =>{
-          vm.user = ();
+          vm.user = {};
       })
 
 
