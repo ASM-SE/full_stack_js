@@ -3,14 +3,20 @@
 
  angular.module('jobs').service('MessageService', service);
 
- service.$inject = ['$mdToast'];
+ service.$inject = ['$rootScope'];
 
-function service($mdToast) {
+function service($rootScope) {
   const svc = this;
 
-  svc.send = (mensagem) => {
-    $mdToast.show($mdToast.simple().textContent(message));
+  //não trato nada que altera a tela aqui, como o $mdToast - este é um serviço!! Boa prática!
+  svc.success = (mensagem) => {
+    $rootScope.$broadcast(mensagem, 'success-message');
   };
+
+  svc.error = (mensagem) => {
+    $rootScope.$broadcast(mensagem, 'error-message');
+  };
+
 
 }
 

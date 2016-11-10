@@ -47,6 +47,12 @@
           </nav>
         </header>
 
+      <div data-ng-controller="MessageController as vm" data-ng-init="vm.init()">
+         <!--Div do Toast - seria melhor se fosse criada uma diretiva própria-->
+         <div data-ng-repeat="error in vm.errors">
+           {{error}}
+         </div>
+      </div>
 
       <main data-ng-view>
         <!--My Content Here!-->
@@ -71,12 +77,14 @@
     <script src="js/config/http-config.js"></script>
     <script src="js/config/route-config.js"></script>
     <script src="js/config/icon-config.js"></script>
-    <script src="js/services/toast-service.js"></script>
+    <!--<script src="js/services/toast-service.js"></script>-->
     <script src="js/interceptors/basic-auth-interceptor.js"></script>
     <script src="js/services/user-service.js"></script>
     <script src="js/controllers/user-controller.js"></script>
-        <script src="js/controllers/menu-controller.js"></script>
+    <script src="js/controllers/menu-controller.js"></script>
     <script src="js/controllers/user-list-controller.js"></script>
+    <script src="js/controllers/message-controller.js"></script>
+    <script src="js/services/message-service.js"></script>
 
 
 <!--Quando definimos no corpo do HTML:

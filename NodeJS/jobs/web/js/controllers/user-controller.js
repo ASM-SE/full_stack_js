@@ -6,11 +6,11 @@
 
   angular.module('jobs').controller('UserController', controller);
 
-  controller.$inject = ['UserService', 'ToastService', '$routeParams', '$mdToast', 'messageService']; //injentando dependencias segundo o jhonpapa https://github.com/johnpapa/angular-styleguide
+  controller.$inject = ['UserService', '$routeParams', '$mdToast', 'MessageService']; //injentando dependencias segundo o jhonpapa https://github.com/johnpapa/angular-styleguide
   //tudo que é injetado é um serviço, não se insere controller em um controller
   //Também implementei o toast do Renan aqui, para deixar os dois - a criação de um serviço pro toast tem que ser avaliado, visto que ele já é um serviço
 
-  function controller(UserService, ToastService, $routeParams, $mdToast, messageService){
+  function controller(UserService, $routeParams, MessageService){
     const vm = this; //view model - como definido por john papa
 
 
@@ -34,12 +34,11 @@
         if(!user._id){
           user._id = res.data._id;
         }
-        ToastService.defaultToaster('Usuário incluído com sucesso!');
-        let message = user._id ? 'Registro alterado com sucesso!' : 'Registro incluido com sucesso')
-        messageService.send(message);
-
-    }).catch((err) => {
-            ToastService.defaultToaster('Problemas na inclusão!');
+      //  ToastService.defaultToaster('Usuário incluído com sucesso!');
+        let mensagem = user._id ? 'Registro alterado com sucesso!' : 'Registro incluido com sucesso!';
+        MessageService.success(mensagem);
+       }).catch((err) => {
+        MessageService.error('Error inesperado!');
     })
   };
 
@@ -51,6 +50,8 @@
           /*injetar o $mdToast
             let mensagem = $mdToast.simple().textContent('Usuário excluído!').position('bottom right');
             $mdToast.show(mensagem); */
+            let mensagem = 'Registro excluído com sucesso!';
+            MessageService.success(mensagem);
       }).catch((err) => {
 
       })
