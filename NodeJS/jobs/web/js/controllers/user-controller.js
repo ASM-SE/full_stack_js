@@ -6,9 +6,9 @@
 
   angular.module('jobs').controller('UserController', controller);
 
-  controller.$inject = ['UserService', '$routeParams']; //injentando dependencias segundo o jhonpapa https://github.com/johnpapa/angular-styleguide
+  controller.$inject = ['UserService', 'ToastService', '$routeParams']; //injentando dependencias segundo o jhonpapa https://github.com/johnpapa/angular-styleguide
 
-  function controller(UserService, $routeParams){
+  function controller(UserService, ToastService, $routeParams){
     const vm = this; //view model - como definido por john papa
 
 
@@ -18,8 +18,9 @@
       if(_id){
         UserService.getUser(_id)
         .then((res) => {
+
             vm.user = res.data;
-            openToast();
+
         })
       }
     };
@@ -29,7 +30,9 @@
       UserService.saveUser(user)
       .then((res) =>{
         if(!user._id){
+
           user._id = res.data._id;
+            ToastService.defaultToaster('Usuário incluído com sucesso!');
       }
     })
   };
@@ -39,6 +42,7 @@
       UserService.remove(user._id)
       .then((res) =>{
           vm.user = {};
+            ToastService.defaultToaster('Usuário excluído com sucesso!');
       })
 
 
