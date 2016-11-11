@@ -10,7 +10,7 @@
   //tudo que é injetado é um serviço, não se insere controller em um controller
   //Também implementei o toast do Renan aqui, para deixar os dois - a criação de um serviço pro toast tem que ser avaliado, visto que ele já é um serviço
 
-  function controller(UserService, $routeParams, MessageService){
+  function controller(UserService, $routeParams, messageService){
     const vm = this; //view model - como definido por john papa
 
 
@@ -28,35 +28,34 @@
     };
 
 
-    vm.save = (user) =>{
-      UserService.saveUser(user)
-      .then((res) =>{
-        if(!user._id){
-          user._id = res.data._id;
-        }
+
       //  ToastService.defaultToaster('Usuário incluído com sucesso!');
+      /*injetar o $mdToast
+        let mensagem = $mdToast.simple().textContent('Usuário excluído!').position('bottom right');
+        $mdToast.show(mensagem); */
 
-                let message = user._id ? 'Registro alterado com sucesso' : 'Registro incluido com sucesso';
-                MessageService.success(message);
-       }).catch((err) => {
-          MessageService.error('Erro inesperado');
-    })
-  };
-
+    vm.save = (user) => {
+      UserService
+        .saveUser(user)
+        .then((res) => {
+          if(!user._id) {
+            user._id = res.data._id;
+          }
+          messageService.success(messageService.messages.succesInserted);
+        })
+        .catch((err) => {
+          messageService.error('Erro inesperado');
+        })
+    };
 
     vm.remove = (user) => {
-      UserService.remove(user._id)
-      .then((res) =>{
+      UserService
+        .remove(user._id)
+        .then((res) => {
           vm.user = {};
-          /*injetar o $mdToast
-            let mensagem = $mdToast.simple().textContent('Usuário excluído!').position('bottom right');
-            $mdToast.show(mensagem); */
-            let mensagem = 'Registro excluído com sucesso!';
-            MessageService.success(mensagem);
-      }).catch((err) => {
-
-      })
+        })
     };
+
 
 }
 
