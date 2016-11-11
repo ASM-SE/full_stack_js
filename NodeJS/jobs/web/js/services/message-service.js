@@ -1,25 +1,21 @@
-(function(angular){
-'use strict';
+(function(angular) {
+  'use strict';
 
- angular.module('jobs').service('MessageService', service);
+  angular.module('jobs').service('MessageService', service)
 
- service.$inject = ['$rootScope'];
+  service.$inject = ['$rootScope'];
 
-function service($rootScope) {
-  const svc = this;
+  function service($rootScope) {
+    const svc = this;
 
   //não trato nada que altera a tela aqui, como o $mdToast - este é um serviço!! Boa prática!
-  svc.success = (mensagem) => {
-    $rootScope.$broadcast(mensagem, 'success-message');
-  };
+    svc.success = (message) => {
+      $rootScope.$broadcast('success-message', message);
+    };
 
-  svc.error = (mensagem) => {
-    $rootScope.$broadcast(mensagem, 'error-message');
-  };
-
-
-}
-
-
+    svc.error = (message) => {
+      $rootScope.$broadcast('error-message', message);
+    };
+  }
 
 })(window.angular);

@@ -35,10 +35,11 @@
           user._id = res.data._id;
         }
       //  ToastService.defaultToaster('Usuário incluído com sucesso!');
-        let mensagem = user._id ? 'Registro alterado com sucesso!' : 'Registro incluido com sucesso!';
-        MessageService.success(mensagem);
+
+                let message = user._id ? 'Registro alterado com sucesso' : 'Registro incluido com sucesso';
+                MessageService.success(message);
        }).catch((err) => {
-        MessageService.error('Error inesperado!');
+          MessageService.error('Erro inesperado');
     })
   };
 

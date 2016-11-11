@@ -6,20 +6,21 @@
 
   controller.$inject = [ '$rootScope'];
 
-  function controller($rootScope){
+  function controller($rootScope, $mdToast) {
     const vm = this;
 
     vm.init = () => {
-      $rootScope.$on('success-message', (event, mensagem) => {
-        $mdToast.show($mdToast.simple().textContent(mensagem).position('bottom right').hideDelay(3000));
-      })
+      vm.errors = [];
 
-      $rootScope.$on('error-message', (event, mensagem) => {
-        vm.errors.push(mensagem);
-      })
+      $rootScope.$on('success-message', (event, message) => {
+        $mdToast.show($mdToast.simple().textContent(message))
+      });
+
+      $rootScope.$on('error-message', (event, message) => {
+        vm.errors.push(message);
+      });
     };
 
-
-}
+  }
 
 })(window.angular);
