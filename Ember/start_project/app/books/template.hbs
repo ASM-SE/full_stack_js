@@ -1,0 +1,18 @@
+{{outlet}}
+
+<!--Conteúdo que será apresentado-->
+{{upcase Books}}
+
+<table class="table table-striped">
+<tbody>
+
+  {{#each model as |book|}}
+  <tr>
+    <td>
+      {{#link-to 'book' book.id}} {{book.name}} {{/link-to}}
+    </td>
+  </tr>
+  {{/each}}
+
+</tbody>
+</table>
