@@ -7,7 +7,9 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('books', {path: 'livros'}); //path indica internalionalização, mudando a rota
+  this.route('books', {path: 'livros'}, function() {
+    this.route('new');//adicionado automaticamente 
+  }); //path indica internalionalização, mudando a rota
   this.route('book', {path: 'livro/:id'}) //passa o id para poder retornar o livro; http://localhost:4200/livro/:1
 });
 

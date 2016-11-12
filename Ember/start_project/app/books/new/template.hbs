@@ -1,13 +1,6 @@
-<h2>
-  {{nameWithId}}
-</h2>
-
 {{#bs-form action="submit"}}
   {{#bs-form-group validation=model.name}}
     <label class="control-label">Name</label>
     {{bs-input type="text" value=model.name}}
  {{/bs-form-group}}
 {{/bs-form}}
-
-
-{{model.resume}}

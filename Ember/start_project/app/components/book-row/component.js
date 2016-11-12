@@ -11,5 +11,12 @@ export default Ember.Component.extend({
 
   didInsertElement(){
     this.$().hide().fadeIn();
+  },
+
+  actions: {
+    delete(){
+      this.sendAction('delete', this.get('model'));
+    }
   }
+
 });

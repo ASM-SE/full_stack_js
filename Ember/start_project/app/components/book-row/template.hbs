@@ -1,3 +1,4 @@
-<td>   {{#link-to 'book' model.id}} {{model.name}} {{model.image}}{{/link-to}} </td>
+<td>   {{#link-to 'book' model.id}} {{model.name}} {{/link-to}} </td>
+<td>   {{#bs-button type="danger" icon="glyphicon glyphicon-trash" action="delete"}}{{/bs-button}}</td>
 
 <!-- O default é div, poderia ser outra tag, de acordo com a necessidade, para importar dentro de uma tabela pois é uma tagName de tabela usa-se   {{book-row book=book}}  -->

@@ -8,5 +8,5 @@ export default function( server ) {
   */
 
   // server.createList('post', 10);
-  server.createList('book', 30);
+  server.createList('book', 10);
 }

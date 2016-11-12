@@ -1,14 +1,16 @@
 {{outlet}}
 
 <!--Conteúdo que será apresentado-->
-{{upcase}}
- Books
+{{upcase "Books"}}
+
 
 <table class="table table-striped">
 <tbody>
 
   {{#each model as |book|}}
-    {{book-row model=book number=3}} <!--Componente tem sempre noms compostos (book-row)-->
+   {{#unless book.isNew}}
+    {{book-row model=book number=3 delete="delete"}} <!--Componente tem sempre noms compostos (book-row)-->
+   {{/unless}}  
   {{/each}}
 
 </tbody>
