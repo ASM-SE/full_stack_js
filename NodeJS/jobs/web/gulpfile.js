@@ -50,11 +50,15 @@ gulp.task('html', ['clean'], () => {
 })
 
 //Copia imagens
-gulp.task('img', ['clean'], () => {
+gulp.task('img', () => {
   return gulp.src('./src/img/**/*')
     .pipe(gulp.dest('./dist/img'))
 })
 
+//Observa os arquivos e se tiver alguma alteração, executa esta tarefa
+gulp.task('watch', () => {
+  return gulp.watch('./src/**/*', ['default'])
+})
 
 
 //o array abaixo indica que a tarefa build tem uma dependencia, no caso a tarefa clean será executada primeiro
