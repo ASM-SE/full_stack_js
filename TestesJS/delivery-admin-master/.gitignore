@@ -1,0 +1,6 @@
+.DS_Store
+coverage*
+bower_components
+#assets
+node_modules
+app.css
