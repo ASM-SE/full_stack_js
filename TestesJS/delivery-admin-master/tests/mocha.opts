@@ -1,3 +1,0 @@
---require test/helpers
---reporter spec test/nodejs/before.js tests/nodejs/*.test.js
---slow 5000

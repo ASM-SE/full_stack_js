@@ -26,13 +26,18 @@ describe('main', () => {
         request                                         
             .get('/api')
             .end((err, response) => {
-                assert.equal(response.body, 'PONG');    
+                assert.equal(response.text, 'PONG');    
                 assert.equal(response.status, 200);
                 done();
         });
     }); 
 
     it('GET /notfound shouldbe 404', () =>{
+        request
+            .get((err, response) => {
+                assert.equal(response.status, 404);
+                console.log(response.body.message, 'Not Found');
+            })
 
     });    
 });

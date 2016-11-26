@@ -11,7 +11,7 @@
     "gulp-watch": "gulp watch",
     "karma": "./node_modules/karma/bin/karma start --browsers PhantomJS ./tests/angular/karma.conf.js",
     "server": "set DEBUG=delivery-admin:*; nodemon ./server/bin/www",
-    "test": "set NODE_ENV=test; set DEBUG=delivery-admin:*; ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha tests/nodejs/*"
+    "test": "set NODE_ENV=test&& set DEBUG=delivery-admin:*&& istanbul cover _mocha tests/nodejs/*"
   },
   "os": [
     "darwin",
